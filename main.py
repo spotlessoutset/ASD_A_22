@@ -8,7 +8,7 @@
 
 import json
 
-# Mengubah objek Anggota menjadi dictionary (rekursif)
+# Mengubah objek Anggota menjadi dictionary
 def anggota_ke_dict(node):
     return {
         "nama": node.nama,
@@ -16,7 +16,7 @@ def anggota_ke_dict(node):
         "bawahan": [anggota_ke_dict(b) for b in node.bawahan]
     }
 
-# Mengubah dictionary kembali menjadi objek Anggota (rekursif)
+# Mengubah dictionary kembali menjadi objek Anggota
 def dict_ke_anggota(data):
     node = Anggota(data["nama"], data["jabatan"])
     node.bawahan = [dict_ke_anggota(b) for b in data["bawahan"]]
