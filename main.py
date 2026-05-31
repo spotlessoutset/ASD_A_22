@@ -1,9 +1,9 @@
 # =============================================
 # STRUKTUR ORGANISASI KELAS
 # KELOMPOK  : 22
-# CONTRIBUTOR   : 1. Ibra Arifa Istara
-#                 2. Ayyash Syauqi Syahadah
-#                 3. Muhammad Adiyoga Danendra
+# ANGGOTA   : 1. Ibra Arifa Istara
+#             2. Ayyash Syauqi Syahadah
+#             3. Muhammad Adiyoga Danendra
 # =============================================
 
 import json
@@ -161,8 +161,24 @@ class Struktur:
 
 # Fungsi utama program, menampilkan menu dan menangani input user
 def main():
-    #contoh
-    organisasi = Struktur("Andi")
+    # Pilihan awal untuk membuat struktur baru atau memuat struktur sebelumnya
+    print("\n--- Struktur Organisasi Kelas ---\n",
+          "1. Buat Struktur Organisasi Baru\n",
+          "2. Load Struktur Organisasi Sebelumnya\n",)
+    
+    pilihan = input("Masukkan pilihan: ")
+
+    # Inisialisasi struktur baru
+    if pilihan == "1":
+        nama_ketua = input("Masukkan nama ketua kelas: ")
+        organisasi = Struktur(nama_ketua)
+    # Load struktur dari file JSON
+    elif pilihan == "2":
+        organisasi = Struktur(None)
+        buka_file(organisasi)
+    else:
+        print("Pilihan tidak valid!")
+        return
 
     print("\n--- Struktur Organisasi Kelas ---")
     organisasi.tampilkan_struktur()
