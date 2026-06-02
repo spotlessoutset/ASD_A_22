@@ -1,0 +1,11 @@
+{
+    "nama": "Andi",
+    "jabatan": "Ketua Kelas",
+    "bawahan": [
+        {
+            "nama": "Yoga",
+            "jabatan": "Wakil",
+            "bawahan": []
+        }
+    ]
+}

@@ -6,6 +6,7 @@
 #             3. Muhammad Adiyoga Danendra
 # =============================================
 
+from collections import deque
 import json
 
 # Mengubah objek Anggota menjadi dictionary
@@ -54,7 +55,10 @@ def buka_file(organisasi):
         print("Terjadi kesalahan saat memuat:", e)
         return False
 
+# ==========================================
 # Class Node
+# ==========================================
+
 # Merepresentasikan satu anggota dalam struktur organisasi.
 class Anggota:
     # Inisialisasi anggota dengan nama, jabatan, dan list bawahan kosong
@@ -63,7 +67,39 @@ class Anggota:
         self.jabatan = jabatan
         self.bawahan = []
 
+# ==========================================
+# Class Riwayat
+# ==========================================
+
+# Menampilkan 5 anggota terakhir yang dihapus
+class Riwayat:
+    def __init__(self):
+        self.queue = deque(maxlen=5)
+
+    def tambah(self, node):
+        self.queue.appendleft(anggota_ke_dict(node))
+
+    def tampilkan(self):
+        if not self.queue:
+            print("Belum ada anggota yang dihapus.")
+            return
+    
+        # Reukursif buat nampilin node beserta seluruh bawahannya
+        def tampilkan_node(data, tingkat=0): 
+            indentasi = "    " * tingkat + ("|_ " if tingkat > 0 else "")
+            print(f"{indentasi}{data['nama']} ({data['jabatan']})")
+            for bawahan in data['bawahan']:
+                tampilkan_node(bawahan, tingkat + 1)
+    
+        print("\n===5 Anggota Terakhir yang Dihapus===")
+        for i, data in enumerate(self.queue, 1):
+            print(f"{i}.")
+            tampilkan_node(data)
+
+# ==========================================
 # Class Struktur Data
+# ========================================== 
+
 # Mengelola struktur organisasi kelas berbasis tree.
 class Struktur:
     # Inisialisasi tree dengan root Ketua Kelas
@@ -127,17 +163,19 @@ class Struktur:
 
     # 3.
     # Menghapus anggota beserta seluruh bawahannya dari struktur
-    def hapus_anggota(self, nama_target):
+    def hapus_anggota(self, nama_target, riwayat):
         if self.root is None:
             print("Struktur kosong.")
             return
-            
+        
         if self.root.nama.lower() == nama_target.lower():
             print("Peringatan: Tidak dapat menghapus Ketua Kelas dari sini!")
             return
 
         parent = self.cari_parent(self.root, nama_target)
         if parent:
+            target_node = self.cari_bawahan(self.root, nama_target)
+            riwayat.tambah(target_node)                              
             parent.bawahan = [b for b in parent.bawahan if b.nama.lower() != nama_target.lower()]
             print(f"Berhasil menghapus '{nama_target}' beserta seluruh bawahannya dari struktur.")
         else:
@@ -175,7 +213,6 @@ class Struktur:
         else:
             print("Anggota tidak ditemukan.")
 
-
 # Fungsi utama program, menampilkan menu dan menangani input user
 def main():
     # Pilihan awal untuk membuat struktur baru atau memuat struktur sebelumnya
@@ -189,9 +226,12 @@ def main():
     if pilihan == "1":
         nama_ketua = input("Masukkan nama ketua kelas: ")
         organisasi = Struktur(nama_ketua)
+        riwayat = Riwayat()
+
     # Load struktur dari file JSON
     elif pilihan == "2":
         organisasi = Struktur(None)
+        riwayat = Riwayat()
         valid = buka_file(organisasi)
         if not valid:
             print("Silakan buat struktur organisasi baru sebagai gantinya.")
@@ -213,6 +253,7 @@ def main():
             "5. Cari Anggota\n",
             "6. Simpan Struktur\n",
             "7. Load Struktur\n",
+            "8. Tampilkan Riwayat Hapus\n",
             "0. Keluar"
         )
 
@@ -230,7 +271,7 @@ def main():
             organisasi.tambah_anggota(nama_atasan, nama_baru, jabatan_baru)
         elif pilihan == "3":
             nama_target = input("Masukkan nama anggota yang ingin dihapus: ")
-            organisasi.hapus_anggota(nama_target)
+            organisasi.hapus_anggota(nama_target, riwayat)
         elif pilihan == "4":
             nama_target = input("Masukkan nama anggota yang ingin diubah: ")
             print("\n(Kosongkan dan tekan Enter pada bagian yang tidak ingin diubah)")
@@ -244,6 +285,8 @@ def main():
             simpan_file(organisasi)
         elif pilihan == "7":
             buka_file(organisasi)
+        elif pilihan == "8":
+            riwayat.tampilkan()
         elif pilihan == "0":
             break
         else:
