@@ -144,6 +144,21 @@ class Struktur:
             print(f"Anggota dengan nama '{nama_target}' tidak ditemukan!")
 
     # 4.
+    # Mengubah data anggota (nama dan/atau jabatan)
+    def update_anggota(self, nama_target, nama_baru, jabatan_baru):
+        anggota = self.cari_bawahan(self.root, nama_target)
+        if anggota:
+            nama_lama = anggota.nama
+            # Jika input tidak kosong, perbarui datanya
+            if nama_baru.strip():
+                anggota.nama = nama_baru
+            if jabatan_baru.strip():
+                anggota.jabatan = jabatan_baru
+            print(f"Berhasil memperbarui data '{nama_lama}'.")
+        else:
+            print(f"Anggota dengan nama '{nama_target}' tidak ditemukan!")
+
+    # 5.
     # Mencari dan menampilkan detail informasi anggota
     def cari_anggota(self, nama_target):
         hasil = self.cari_bawahan(self.root, nama_target)
@@ -194,9 +209,10 @@ def main():
             "1. Tampilkan Struktur Organisasi\n",
             "2. Tambah Anggota\n",
             "3. Hapus Anggota\n",
-            "4. Cari Anggota\n",
-            "5. Simpan Struktur\n",
-            "6. Load Struktur\n",
+            "4. Update Anggota\n",
+            "5. Cari Anggota\n",
+            "6. Simpan Struktur\n",
+            "7. Load Struktur\n",
             "0. Keluar"
         )
 
@@ -216,11 +232,17 @@ def main():
             nama_target = input("Masukkan nama anggota yang ingin dihapus: ")
             organisasi.hapus_anggota(nama_target)
         elif pilihan == "4":
+            nama_target = input("Masukkan nama anggota yang ingin diubah: ")
+            print("\n(Kosongkan dan tekan Enter pada bagian yang tidak ingin diubah)")
+            nama_baru = input("Masukkan nama baru: ")
+            jabatan_baru = input("Masukkan jabatan baru: ")
+            organisasi.update_anggota(nama_target, nama_baru, jabatan_baru)
+        elif pilihan == "5":
             nama_target = input("Masukkan nama anggota yang ingin dicari: ")
             organisasi.cari_anggota(nama_target)
-        elif pilihan == "5":
-            simpan_file(organisasi)
         elif pilihan == "6":
+            simpan_file(organisasi)
+        elif pilihan == "7":
             buka_file(organisasi)
         elif pilihan == "0":
             break
