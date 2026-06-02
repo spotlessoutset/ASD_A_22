@@ -15,7 +15,7 @@ Aplikasi ini dilengkapi dengan operasi dasar *Tree* yang telah disesuaikan untuk
 * **Update Data Anggota:** Mengubah nama atau jabatan anggota tanpa merusak struktur hierarki yang sudah ada.
 * **Cari Detail Anggota:** Melihat informasi nama, jabatan, serta siapa saja bawahan langsung dari anggota tersebut.
 * **Penyimpanan JSON:** Simpan progres struktur kelas Anda kapan saja ke file `data.json`.
-* **Riwayat Hapus (NEW!):** Menyimpan 5 operasi penghapusan terakhir beserta seluruh subtree-nya untuk referensi.
+* **Riwayat Hapus (Baru!):** Menyimpan 5 operasi penghapusan terakhir beserta seluruh subtree-nya untuk referensi.
 
 ---
 
