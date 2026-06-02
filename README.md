@@ -38,7 +38,9 @@ python main.py
 ## 📖 Pratinjau Menu Utama
 Saat menjalankan aplikasi, Anda akan disuguhkan menu interaktif seperti berikut:
 ```text
+=============================================
 ========= Struktur Organisasi Kelas =========
+=============================================
  1. Tampilkan Struktur Organisasi
  2. Tambah Anggota
  3. Hapus Anggota

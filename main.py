@@ -157,9 +157,27 @@ class Struktur:
         if atasan:
             anggota_baru = Anggota(nama_baru, jabatan_baru)
             atasan.bawahan.append(anggota_baru)
+            self.urutkan_bawahan(atasan.bawahan)
             print(f"Berhasil menambahkan {nama_baru} sebagai {jabatan_baru}.")
         else:
             print(f"Gagal: Atasan dengan nama '{nama_atasan}' tidak ditemukan!")
+
+    # Sorting bawahan secara alfabetis
+    def urutkan_bawahan(self, kumpulan_bawahan):
+        n = len(kumpulan_bawahan)
+        gap = n // 2
+
+        # Lakukan iterasi Shell sort
+        while gap > 0:
+            for i in range(gap, n):
+                temp = kumpulan_bawahan[i]
+                j = i
+                # Bandingkan string nama dalam format lowercase agar case-insensitive
+                while j >= gap and kumpulan_bawahan[j - gap].nama.lower() > temp.nama.lower():
+                    kumpulan_bawahan[j] = kumpulan_bawahan[j - gap]
+                    j -= gap
+                kumpulan_bawahan[j] = temp
+            gap //= 2
 
     # 3.
     # Menghapus anggota beserta seluruh bawahannya dari struktur
@@ -216,9 +234,11 @@ class Struktur:
 # Fungsi utama program, menampilkan menu dan menangani input user
 def main():
     # Pilihan awal untuk membuat struktur baru atau memuat struktur sebelumnya
-    print("\n--- Struktur Organisasi Kelas ---\n",
-          "1. Buat Struktur Organisasi Baru\n",
-          "2. Load Struktur Organisasi Sebelumnya\n",)
+    print("\n=============================================\n",
+        "\n========= Struktur Organisasi Kelas =========\n",
+        "\n=============================================\n",
+        "1. Buat Struktur Organisasi Baru\n",
+        "2. Load Struktur Organisasi Sebelumnya\n",)
     
     pilihan = input("Masukkan pilihan: ")
 
@@ -244,8 +264,9 @@ def main():
     print("\n--- Struktur Organisasi Kelas ---")
     organisasi.tampilkan_struktur()
     while True:
-        print("\n"
-            "========= Struktur Organisasi Kelas =========\n",
+        print("\n=============================================\n",
+            "\n========= Struktur Organisasi Kelas =========\n",
+            "\n=============================================\n",
             "1. Tampilkan Struktur Organisasi\n",
             "2. Tambah Anggota\n",
             "3. Hapus Anggota\n",
@@ -263,6 +284,7 @@ def main():
         # IF ELSE INPUT USER
 
         if pilihan == "1":
+            print("\n--- Struktur Organisasi Kelas ---")
             organisasi.tampilkan_struktur()
         elif pilihan == "2":
             nama_atasan = input("Masukkan nama atasan: ")
