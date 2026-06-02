@@ -47,10 +47,12 @@ def buka_file(organisasi):
         
         organisasi.root = dict_ke_anggota(data)
         print("Struktur berhasil dimuat dari 'data.json'")
+        return True
     except FileNotFoundError:
         print("File tidak ditemukan!")
     except Exception as e:
         print("Terjadi kesalahan saat memuat:", e)
+        return False
 
 # Class Node
 # Merepresentasikan satu anggota dalam struktur organisasi.
@@ -175,7 +177,11 @@ def main():
     # Load struktur dari file JSON
     elif pilihan == "2":
         organisasi = Struktur(None)
-        buka_file(organisasi)
+        valid = buka_file(organisasi)
+        if not valid:
+            print("Silakan buat struktur organisasi baru sebagai gantinya.")
+            nama_ketua = input("Masukkan nama ketua kelas: ")
+            organisasi = Struktur(nama_ketua)
     else:
         print("Pilihan tidak valid!")
         return
