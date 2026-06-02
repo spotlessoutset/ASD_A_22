@@ -167,12 +167,10 @@ class Struktur:
         n = len(kumpulan_bawahan)
         gap = n // 2
 
-        # Lakukan iterasi Shell sort
         while gap > 0:
             for i in range(gap, n):
                 temp = kumpulan_bawahan[i]
                 j = i
-                # Bandingkan string nama dalam format lowercase agar case-insensitive
                 while j >= gap and kumpulan_bawahan[j - gap].nama.lower() > temp.nama.lower():
                     kumpulan_bawahan[j] = kumpulan_bawahan[j - gap]
                     j -= gap
