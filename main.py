@@ -162,20 +162,19 @@ class Struktur:
         else:
             print(f"Gagal: Atasan dengan nama '{nama_atasan}' tidak ditemukan!")
 
-    # Sorting bawahan secara alfabetis
+    # Sorting bawahan secara alfabetis menggunakan insertion sort
     def urutkan_bawahan(self, kumpulan_bawahan):
         n = len(kumpulan_bawahan)
-        gap = n // 2
-
-        while gap > 0:
-            for i in range(gap, n):
-                temp = kumpulan_bawahan[i]
-                j = i
-                while j >= gap and kumpulan_bawahan[j - gap].nama.lower() > temp.nama.lower():
-                    kumpulan_bawahan[j] = kumpulan_bawahan[j - gap]
-                    j -= gap
-                kumpulan_bawahan[j] = temp
-            gap //= 2
+        
+        for i in range(1, n):
+            temp = kumpulan_bawahan[i]
+            j = i - 1
+            
+            while j >= 0 and kumpulan_bawahan[j].nama.lower() > temp.nama.lower():
+                kumpulan_bawahan[j + 1] = kumpulan_bawahan[j]
+                j -= 1
+                
+            kumpulan_bawahan[j + 1] = temp
 
     # 3.
     # Menghapus anggota beserta seluruh bawahannya dari struktur

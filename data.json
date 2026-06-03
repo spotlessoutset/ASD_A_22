@@ -1,0 +1,53 @@
+{
+    "nama": "Yanto",
+    "jabatan": "Ketua Kelas",
+    "bawahan": [
+        {
+            "nama": "Wawan",
+            "jabatan": "Wakil Ketua",
+            "bawahan": [
+                {
+                    "nama": "Ucup",
+                    "jabatan": "Sekretaris",
+                    "bawahan": [
+                        {
+                            "nama": "Ucok",
+                            "jabatan": "Wakil Sekretaris",
+                            "bawahan": []
+                        }
+                    ]
+                },
+                {
+                    "nama": "Saipul",
+                    "jabatan": "Bendahara",
+                    "bawahan": []
+                },
+                {
+                    "nama": "Adi",
+                    "jabatan": "Siswa",
+                    "bawahan": []
+                },
+                {
+                    "nama": "Arifa",
+                    "jabatan": "Siswa",
+                    "bawahan": []
+                },
+                {
+                    "nama": "Syauqi",
+                    "jabatan": "Siswa",
+                    "bawahan": []
+                },
+                {
+                    "nama": "Rizky",
+                    "jabatan": "Siswa",
+                    "bawahan": []
+                },
+                {
+                    "nama": "Jamal",
+                    "jabatan": "Siswa",
+                    "bawahan": []
+                }
+            ]
+        }
+    ]
+}
