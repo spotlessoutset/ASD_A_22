@@ -25,8 +25,8 @@ Pastikan Anda sudah menginstal Python di komputer Anda (versi 3.x direkomendasik
 ### Langkah-langkah
 1. **Clone repositori ini** ke komputer Anda:
 ```bash
-git clone https://github.com/spotlessoutset/Kelompok22-TPLA.git
-cd Kelompok22-TPLA
+git clone https://github.com/spotlessoutset/ASD_A_22.git
+cd ASD_A_22
 ```
 2. **Jalankan aplikasi** melalui terminal/command prompt:
 ```bash
