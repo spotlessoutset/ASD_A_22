@@ -1,5 +1,10 @@
 # Kelompok22-TPLA
 Struktur Organisasi Kelas
+
+## Video Penjelasan dan Demo 
+
+https://youtu.be/5ch0BDfKyJc?si=mBvbyBLpegwakWuH
+
 # 🏫 Class Organization Structure (Tree CLI)
 Aplikasi berbasis **Command Line Interface (CLI)** sederhana untuk mengelola struktur organisasi kelas menggunakan konsep struktur data **Tree (Pohon)** di Python. Aplikasi ini mendukung penambahan, penghapusan, pencarian, pembaruan data anggota, penyimpanan ke file JSON, serta riwayat penghapusan anggota.
 Jangan biarkan hierarki organisasi kelasmu berantakan seperti kabel earphone di dalam saku! Tatap masa depan kelas yang lebih terstruktur dengan aplikasi ini. 😎
@@ -78,10 +83,6 @@ Aplikasi ini menggunakan representasi **General Tree** di mana:
 > ⚠️ **Catatan Penting:** Penghapusan Ketua Kelas (Root Node) dibatasi di dalam menu hapus biasa demi menjaga agar struktur pohon tidak rusak total.
 
 ---
-
-## Video Penjelasan dan Demo 
-
-https://youtu.be/5ch0BDfKyJc?si=mBvbyBLpegwakWuH
 
 ## 🤝 Kontribusi
 Punya ide untuk menambahkan fitur visualisasi berbasis grafis atau fitur menarik lainnya? *Pull Request* selalu terbuka untuk siapa saja!
