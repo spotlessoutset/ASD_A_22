@@ -79,6 +79,10 @@ Aplikasi ini menggunakan representasi **General Tree** di mana:
 
 ---
 
+## Video Penjelasan dan Demo 
+
+https://youtu.be/5ch0BDfKyJc?si=mBvbyBLpegwakWuH
+
 ## 🤝 Kontribusi
 Punya ide untuk menambahkan fitur visualisasi berbasis grafis atau fitur menarik lainnya? *Pull Request* selalu terbuka untuk siapa saja!
 1. *Fork* Repositori ini
